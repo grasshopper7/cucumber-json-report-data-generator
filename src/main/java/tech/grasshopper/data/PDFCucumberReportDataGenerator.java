@@ -53,19 +53,6 @@ public class PDFCucumberReportDataGenerator {
 
 					endTime = startTime.plusNanos(cukeStep.getResult().getDuration());
 
-					/*
-					 * Step step = Step.builder().name(cukeStep.getKeyword() + " " +
-					 * cukeStep.getName()) .before(beforeStepHooks).after(afterStepHooks)
-					 * .status(convertStatus(cukeStep.getResult().getStatus())).keyword(cukeStep.
-					 * getKeyword())
-					 * .docString(cukeStep.getDocString().getValue()).rows(convertRows(cukeStep.
-					 * getRows()))
-					 * .errorMessage(cukeStep.getResult().getErrorMessage()).output(cukeStep.
-					 * getOutput())
-					 * .media(getMediaData(cukeStep.getEmbeddings())).startTime(startTime).endTime(
-					 * endTime) .build();
-					 */
-
 					Step step = createStep(cukeStep, beforeStepHooks, afterStepHooks, startTime, endTime);
 					steps.add(step);
 
@@ -79,28 +66,11 @@ public class PDFCucumberReportDataGenerator {
 				startTime = createHooks(cukeScenario.getAfter(), startTime, afterHooks, HookType.AFTER,
 						stepHookStatuses);
 
-				/*
-				 * Scenario scenario = Scenario.builder().name(cukeScenario.getName())
-				 * .tags(cukeScenario.getTags().stream().map(t ->
-				 * t.getName()).collect(Collectors.toList()))
-				 * .steps(steps).before(beforeHooks).after(afterHooks).status(Collections.max(
-				 * stepHookStatuses))
-				 * .startTime(DateUtil.convertToLocalDateTimeFromTimeStamp(cukeScenario.
-				 * getStartTimestamp())) .endTime(startTime).build();
-				 */
-
 				Scenario scenario = createScenario(cukeScenario, steps, stepHookStatuses, beforeHooks, afterHooks,
 						startTime);
 				scenarios.add(scenario);
 				scenarioStatuses.add(Collections.max(stepHookStatuses));
 			}
-			/*
-			 * Feature feature = Feature.builder().name(cukeFeature.getName())
-			 * .tags(cukeFeature.getTags().stream().map(t ->
-			 * t.getName()).collect(Collectors.toList()))
-			 * .scenarios(scenarios).status(Collections.max(scenarioStatuses)).startTime(
-			 * featureStartTime) .endTime(startTime).build();
-			 */
 
 			Feature feature = createFeature(cukeFeature, scenarios, scenarioStatuses, featureStartTime, startTime);
 			features.add(feature);

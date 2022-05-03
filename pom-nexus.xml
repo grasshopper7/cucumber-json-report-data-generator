@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>tech.grasshopper</groupId>
 	<artifactId>cucumber-json-report-data-generator</artifactId>
-	<version>1.0.0</version>
+	<version>1.0.1</version>
 	<name>cucumber-json-report-data-generator</name>
 	<url>https://ghchirp.tech/</url>
 	<description>Generates PDF report data from cucumber json report
@@ -34,7 +34,7 @@
 
 		<gson.version>2.9.0</gson.version>
 		<lombok.version>1.18.18</lombok.version>
-		<pdfreporter.version>2.7.0</pdfreporter.version>
+		<pdfreporter.version>2.7.1</pdfreporter.version>
 		<maven.compiler.source>1.8</maven.compiler.source>
 		<maven.compiler.target>1.8</maven.compiler.target>
 	</properties>
